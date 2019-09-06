@@ -1,0 +1,27 @@
+{
+  "name": "face-recognition-api",
+  "version": "1.0.0",
+  "description": "API for Face-recognition-brain APP",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webgrandmo/face-recognition-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/webgrandmo/face-recognition-api/issues"
+  },
+  "homepage": "https://github.com/webgrandmo/face-recognition-api#readme",
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "nodemon": "^1.19.2"
+  }
+}
