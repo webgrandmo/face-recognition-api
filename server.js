@@ -1,5 +1,8 @@
 const express = require('express'),
-    bodyParser = require('body-parser');
+    bodyParser = require('body-parser'),
+    bcrypt = require('bcrypt'),
+    cors = require('cors'),
+    saltRounds = 10;
 
 
 const database = {
@@ -20,11 +23,19 @@ const database = {
             entries: 0,
             joined: new Date()
         }
+    ],
+    login: [
+        {
+            id: "123",
+            email: "john.doe@gmail.com",
+            hash: ""
+        }
     ]
 }
 
 const app = express();
 
+app.use(cors());
 app.use(bodyParser.json());
 
 app.get( '/', (req, res) => {
@@ -34,7 +45,7 @@ app.get( '/', (req, res) => {
 //Sign in
 app.post('/signin', (req, res) => {
     if (req.body.email === database.users[0].email && req.body.password === database.users[0].password) {
-        res.json('Sign IN');
+        res.json(database.users[0]);
     } else {
         res.status(404).json('Error whili logging in');
     }
@@ -44,6 +55,10 @@ app.post('/signin', (req, res) => {
 //Register
 app.post('/register', (req, res) => {
     const {name, email, password} = req.body;
+    bcrypt.hash(password, saltRounds, function(err, hash) {
+        // Store hash in your password DB.
+        console.log(hash);
+    });
    database.users.push(
        {
             id: "3",
